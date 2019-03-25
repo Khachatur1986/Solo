@@ -145,10 +145,10 @@ public class HomeActivity extends AppCompatActivity implements SwipeRefreshLayou
         });
     }
 
-
     @Override
     protected void onStart() {
         super.onStart();
+        loadPinnedItems();
         stopService(new Intent(this, FeedService.class));
     }
 
