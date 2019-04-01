@@ -35,28 +35,32 @@ public class ApiClient {
     }
 
     private Retrofit getRetroInstance() {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        if (retrofit == null) {
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        File httpCacheDirectory = new File(cacheDir, "offlineCache");
+            File httpCacheDirectory = new File(cacheDir, "offlineCache");
 
-        //10 MB
-        Cache cache = new Cache(httpCacheDirectory, 10 * 1024 * 1024);
+            //10 MB
+            Cache cache = new Cache(httpCacheDirectory, 10 * 1024 * 1024);
 
-        OkHttpClient client = new OkHttpClient.Builder()
-                .cache(cache)
-                .addInterceptor(interceptor)
-                .build();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .cache(cache)
+                    .addInterceptor(interceptor)
+                    .build();
 
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                .create();
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                    .create();
 
-        return new Retrofit.Builder().baseUrl(BASE_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
+            return new Retrofit.Builder().baseUrl(BASE_URL)
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+        }else {
+            return retrofit;
+        }
     }
 
     public <S> S createService(Class<S> serviceClass) {

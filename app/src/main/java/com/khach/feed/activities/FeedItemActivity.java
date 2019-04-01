@@ -20,7 +20,7 @@ import com.khach.feed.models.PinnedModel;
 public class FeedItemActivity extends AppCompatActivity implements View.OnClickListener {
     private Toolbar toolbar;
     private FloatingActionButton fab;
-    private TextView tvFeedDescript;
+    private TextView tvFeedDescription;
     private CollapsingToolbarLayout toolbarLayout;
     private ImageView ivFeedImg;
 
@@ -44,7 +44,7 @@ public class FeedItemActivity extends AppCompatActivity implements View.OnClickL
             sectionName = getIntent().getStringExtra("sectionName");
             thumbnail = getIntent().getStringExtra("thumbnail");
 
-            tvFeedDescript.setText(webTitle);
+            tvFeedDescription.setText(webTitle);
             toolbarLayout.setTitle(sectionName);
             toolbarLayout.setBackgroundResource(R.drawable.ic_launcher_background);
             Glide.with(getApplicationContext()).asDrawable().load(thumbnail).into(ivFeedImg);
@@ -55,7 +55,7 @@ public class FeedItemActivity extends AppCompatActivity implements View.OnClickL
     private void initViews() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
-        tvFeedDescript = findViewById(R.id.tv_feed_descript);
+        tvFeedDescription = findViewById(R.id.tv_feed_description);
         toolbarLayout = findViewById(R.id.toolbar_layout);
         ivFeedImg = findViewById(R.id.iv_feed_img);
     }

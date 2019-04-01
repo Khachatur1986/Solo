@@ -79,8 +79,8 @@ public class HomeAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         notifyItemInserted(feedModelArrayList.size() - 1);
     }
 
-    public void addAll(List<Result> feedModelArrayList) {
-        for (Result response : feedModelArrayList) {
+    public void addAll(List<Result> results) {
+        for (Result response : results) {
             add(response);
         }
     }
@@ -156,7 +156,7 @@ public class HomeAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             tvFeedSectionName.setText(feedModelArrayList.get(position).getSectionName());
             tvFeedWebTitle.setText(feedModelArrayList.get(position).getWebTitle());
             Glide.with(ivFeedThumbnail)
-                    .load(feedModelArrayList.get(position).getFields().getThumbnail())
+                    .load(item.getFields().getThumbnail())
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model,

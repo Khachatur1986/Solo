@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_feed_item">
 
     <TextView
-        android:id="@+id/tv_feed_descript"
+        android:id="@+id/tv_feed_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin" />

@@ -16,7 +16,7 @@ public interface IFeedService {
 
 
     @GET("search")
-    Call<Feed> loadFeeds(@Query("q") String q,
+    Call<Feed> loadFeedsByPageNumber(@Query("q") String q,
                          @Query("format") String format,
                          @Query("show-fields") String showFields,
                          @Query("show-elements") String showElements,
